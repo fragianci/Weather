@@ -19,8 +19,8 @@ export class AppComponent implements OnDestroy {
     private httpClient: HttpClient
     ){}
 
-  uploadFile(file){
-    this.httpClient.get('assets/weather.dat', { responseType: 'text' }).subscribe(
+  uploadFile(){
+    this.mySubscription = this.httpClient.get('assets/weather.dat', { responseType: 'text' }).subscribe(
       data => {
         this.weather = JSON.stringify(data);
         this.myTemp = this.weatherService.takeTemp(this.weather);
