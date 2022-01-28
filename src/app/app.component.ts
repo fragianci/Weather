@@ -13,6 +13,7 @@ export class AppComponent implements OnDestroy {
   weather: any;
   mySubscription: Subscription
   myTemp: any;
+  myError: string;
 
   constructor(
     private weatherService: WeatherService,
@@ -24,6 +25,10 @@ export class AppComponent implements OnDestroy {
       data => {
         this.weather = JSON.stringify(data);
         this.myTemp = this.weatherService.takeTemp(this.weather);
+      },
+      error => {
+        console.log(error)
+        this.myError = "Whoops. File not found";
       }
     );
 
