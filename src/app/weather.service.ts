@@ -43,7 +43,7 @@ export class WeatherService {
                 }
             }
             if(hotTemp && coldTemp) {
-                let diff = this.getDifference(hotTemp, coldTemp);
+                let diff = hotTemp - coldTemp;
                 let objTemp = {day, diff};
                 temp.push(objTemp);
                 hotTemp = 0;
@@ -54,13 +54,9 @@ export class WeatherService {
                 colIndex = 0;
             }
         })
+        console.log(temp)
         let myTemp = this.minTDay(temp);
         return myTemp;
-    }
-
-    getDifference(hotTemp: number, coldTemp: number){
-        let result = hotTemp - coldTemp;
-        return result;
     }
 
     // Estrae l'escursione termica piu piccola

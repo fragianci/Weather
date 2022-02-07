@@ -29,7 +29,8 @@ export class AppComponent implements OnDestroy {
       error => {
         console.log(error)
         this.myError = "Whoops. File not found";
-      }
+      },
+      () => console.log("Subscription suceeded")
     );
 
     
