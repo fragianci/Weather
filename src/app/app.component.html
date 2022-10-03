@@ -1,6 +1,6 @@
 <div class="form-group">
   <button class="btn btn-primary" (click)="uploadFile()">Carica File</button>
-  <p *ngIf="myError">{{myError}}</p>
+  <p class="error" *ngIf="myError">{{myError}}</p>
 </div>
 
 <div *ngIf="myTemp" style="margin: 15px;">The day with the minor temperature range has been {{myTemp.day}} with a temperature range of {{myTemp.diff}}</div>

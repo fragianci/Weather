@@ -11,29 +11,29 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnDestroy {
   title = 'Weather';
   weather: any;
-  mySubscription: Subscription
+  mySubscription: Subscription;
   myTemp: any;
   myError: string;
 
   constructor(
     private weatherService: WeatherService,
     private httpClient: HttpClient
-    ){}
+  ) { }
 
-  uploadFile(){
-    this.mySubscription = this.httpClient.get('assets/weather.dat', { responseType: 'text' }).subscribe(
+  uploadFile() {
+    this.mySubscription = (this.httpClient.get('assets/weather.dat', { responseType: 'text' })).subscribe(
       data => {
         this.weather = JSON.stringify(data);
         this.myTemp = this.weatherService.takeTemp(this.weather);
       },
       error => {
-        console.log(error)
+        console.log(error);
         this.myError = "Whoops. File not found";
       },
       () => console.log("Subscription suceeded")
     );
 
-    
+
   }
 
   ngOnDestroy(): void {
